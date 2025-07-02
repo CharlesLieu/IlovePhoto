@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片尺寸转换器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📸 照片尺寸转换器</h1>
+            <p>支持JPG、PNG格式，可转换为1×1cm到10×10cm尺寸，保持原图完整</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <h3>选择图片文件</h3>
+                        <p>支持 JPG、PNG 格式</p>
+                        <input type="file" id="fileInput" accept=".jpg,.jpeg,.png" hidden>
+                        <button class="upload-btn">
+                            选择文件
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section" id="settingsSection" style="display: none;">
+                <h2>转换设置</h2>
+                
+                <div class="size-controls">
+                    <div class="size-group">
+                        <label for="width">宽度 (cm):</label>
+                        <input type="number" id="width" min="1" max="10" step="0.1" value="5">
+                    </div>
+                    
+                    <div class="size-group">
+                        <label for="height">高度 (cm):</label>
+                        <input type="number" id="height" min="1" max="10" step="0.1" value="5">
+                    </div>
+                    
+                    <div class="size-group">
+                        <label for="dpi">分辨率 (DPI):</label>
+                        <select id="dpi">
+                            <option value="72">72 DPI (屏幕显示)</option>
+                            <option value="150">150 DPI (一般打印)</option>
+                            <option value="300" selected>300 DPI (高质量打印)</option>
+                            <option value="600">600 DPI (专业打印)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="preset-sizes">
+                    <h3>常用尺寸</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-width="1" data-height="1">1×1cm</button>
+                        <button class="preset-btn" data-width="2" data-height="2">2×2cm</button>
+                        <button class="preset-btn" data-width="3" data-height="3">3×3cm</button>
+                        <button class="preset-btn" data-width="5" data-height="5">5×5cm</button>
+                        <button class="preset-btn" data-width="10" data-height="10">10×10cm</button>
+                        <button class="preset-btn" data-width="3" data-height="4">3×4cm</button>
+                        <button class="preset-btn" data-width="4" data-height="6">4×6cm</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="convert-btn" id="convertBtn">转换图片</button>
+                    <button class="reset-btn" id="resetBtn">重新选择</button>
+                </div>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h2>预览效果</h2>
+                <div class="preview-container">
+                    <div class="original-image">
+                        <h3>原始图片</h3>
+                        <img id="originalImage" alt="原始图片">
+                        <div class="image-info" id="originalInfo"></div>
+                    </div>
+                    <div class="converted-image">
+                        <h3>转换后图片</h3>
+                        <canvas id="convertedCanvas"></canvas>
+                        <div class="image-info" id="convertedInfo"></div>
+                    </div>
+                </div>
+                <div class="download-section">
+                    <button class="download-btn" id="downloadBtn">下载转换后的图片</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2024 照片尺寸转换器 - 纯前端处理，保护您的隐私</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

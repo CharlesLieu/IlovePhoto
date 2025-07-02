@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片尺寸转换器 - 演示</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: white;
+        }
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .demo-content {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(40, 167, 69, 0.3);
+        }
+        .demo-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>📸 照片尺寸转换器</h1>
+        
+        <div class="demo-content">
+            <h2>🎯 项目概述</h2>
+            <p>一个纯前端的照片尺寸转换工具，支持将JPG、PNG格式的图片转换为1×1cm到10×10cm的指定尺寸。<strong>智能保持原图完整，添加白色背景，不会裁切任何内容。</strong></p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>多格式支持</h3>
+                    <p>支持JPG、PNG格式图片转换</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📏</div>
+                    <h3>精确尺寸</h3>
+                    <p>1×1cm到10×10cm任意尺寸</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>响应式设计</h3>
+                    <p>完美适配手机端和电脑端</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>隐私保护</h3>
+                    <p>纯前端处理，图片不上传服务器</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>智能处理</h3>
+                    <p>保持原图完整，添加白色背景</p>
+                </div>
+            </div>
+            
+            <h2>🚀 快速体验</h2>
+            <p>点击下方按钮开始使用照片尺寸转换器</p>
+            
+            <a href="index.html" class="cta-button">开始使用</a>
+            <a href="README.md" class="cta-button" style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%);">查看文档</a>
+        </div>
+        
+        <div class="demo-content">
+            <h2>📖 使用流程</h2>
+            <ol style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li><strong>上传图片</strong> - 点击选择或拖拽图片文件</li>
+                <li><strong>设置参数</strong> - 输入目标尺寸和分辨率</li>
+                <li><strong>转换图片</strong> - 一键转换并预览效果</li>
+                <li><strong>下载结果</strong> - 保存转换后的图片</li>
+            </ol>
+        </div>
+        
+        <div class="demo-content">
+            <h2>🛠️ 技术特性</h2>
+            <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <li>HTML5 Canvas API 图片处理</li>
+                <li>CSS3 响应式布局设计</li>
+                <li>JavaScript 文件操作和用户交互</li>
+                <li>拖拽上传和快捷键支持</li>
+                <li>实时预览和高质量渲染</li>
+            </ul>
+        </div>
+        
+        <footer style="margin-top: 40px; opacity: 0.8;">
+            <p>© 2024 照片尺寸转换器 - 纯前端处理，保护您的隐私</p>
+        </footer>
+    </div>
+</body>
+</html> 

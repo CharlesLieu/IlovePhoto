@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片预览测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .upload-area:hover {
+            border-color: #007bff;
+            background: #f8f9fa;
+        }
+        .preview-area {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+        .preview-area img {
+            max-width: 100%;
+            max-height: 300px;
+            border: 1px solid #ccc;
+        }
+        .info {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>图片预览测试</h1>
+        
+        <div class="upload-area" onclick="document.getElementById('testFileInput').click()">
+            <h3>点击选择图片文件</h3>
+            <p>支持 JPG、PNG 格式</p>
+            <input type="file" id="testFileInput" accept=".jpg,.jpeg,.png" style="display: none;">
+        </div>
+        
+        <div class="preview-area" id="previewArea">
+            <h3>预览图片</h3>
+            <img id="testImage" alt="测试图片">
+            <div class="info" id="imageInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('testFileInput');
+        const previewArea = document.getElementById('previewArea');
+        const testImage = document.getElementById('testImage');
+        const imageInfo = document.getElementById('imageInfo');
+        
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                console.log('选择的文件:', file.name, file.type, file.size);
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    console.log('文件读取完成');
+                    
+                    const img = new Image();
+                    img.onload = function() {
+                        console.log('图片加载完成:', img.naturalWidth, 'x', img.naturalHeight);
+                        
+                        testImage.src = img.src;
+                        imageInfo.innerHTML = `
+                            文件名: ${file.name}<br>
+                            尺寸: ${img.naturalWidth} × ${img.naturalHeight} 像素<br>
+                            文件大小: ${formatFileSize(file.size)}<br>
+                            文件类型: ${file.type}
+                        `;
+                        
+                        previewArea.style.display = 'block';
+                        console.log('预览区域显示状态:', previewArea.style.display);
+                    };
+                    
+                    img.onerror = function() {
+                        console.error('图片加载失败');
+                        alert('图片加载失败');
+                    };
+                    
+                    img.src = e.target.result;
+                };
+                
+                reader.onerror = function() {
+                    console.error('文件读取失败');
+                    alert('文件读取失败');
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+    </script>
+</body>
+</html> 
