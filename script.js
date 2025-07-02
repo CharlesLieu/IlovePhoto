@@ -24,6 +24,10 @@ const presetButtons = document.querySelectorAll('.preset-btn');
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
     initializeEventListeners();
+    if (window.i18n && window.i18n.initLanguage) {
+        window.i18n.initLanguage();
+    }
+    setupLanguageSelector();
 });
 
 // 初始化事件监听器
@@ -447,4 +451,26 @@ function debounce(func, wait) {
 const debouncedConvert = debounce(convertImage, 500);
 widthInput.addEventListener('input', debouncedConvert);
 heightInput.addEventListener('input', debouncedConvert);
-dpiSelect.addEventListener('change', debouncedConvert); 
+dpiSelect.addEventListener('change', debouncedConvert);
+
+// 语言选择器交互逻辑
+function setupLanguageSelector() {
+    const selector = document.getElementById('languageSelector');
+    if (!selector) return;
+    const btn = selector.querySelector('.current-language');
+    const dropdown = selector.querySelector('.language-dropdown');
+    btn.onclick = function(e) {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    };
+    document.addEventListener('click', function() {
+        dropdown.style.display = 'none';
+    });
+    selector.querySelectorAll('.lang-option').forEach(opt => {
+        opt.onclick = function(e) {
+            e.stopPropagation();
+            window.i18n.changeLanguage(opt.dataset.lang);
+            dropdown.style.display = 'none';
+        };
+    });
+} 

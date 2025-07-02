@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>照片尺寸转换器</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js"></script>
 </head>
 <body>
     <div class="container">
+        <div style="position: absolute; top: 20px; right: 30px; z-index: 10;">
+            <div id="languageSelector" style="display: inline-block;">
+                <button class="current-language" style="padding: 6px 16px; border-radius: 20px; border: 1px solid #ddd; background: #fff; cursor: pointer; font-size: 1rem;">
+                    中文简体
+                </button>
+                <div class="language-dropdown" style="display: none; position: absolute; right: 0; background: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); min-width: 120px;">
+                    <div class="lang-option" data-lang="zh-CN" style="padding: 8px 16px; cursor: pointer;">中文简体</div>
+                    <div class="lang-option" data-lang="zh-TW" style="padding: 8px 16px; cursor: pointer;">中文繁體</div>
+                    <div class="lang-option" data-lang="en" style="padding: 8px 16px; cursor: pointer;">English</div>
+                    <div class="lang-option" data-lang="ja" style="padding: 8px 16px; cursor: pointer;">日本語</div>
+                    <div class="lang-option" data-lang="ko" style="padding: 8px 16px; cursor: pointer;">한국어</div>
+                    <div class="lang-option" data-lang="fr" style="padding: 8px 16px; cursor: pointer;">Français</div>
+                    <div class="lang-option" data-lang="de" style="padding: 8px 16px; cursor: pointer;">Deutsch</div>
+                    <div class="lang-option" data-lang="es" style="padding: 8px 16px; cursor: pointer;">Español</div>
+                    <div class="lang-option" data-lang="ru" style="padding: 8px 16px; cursor: pointer;">Русский</div>
+                </div>
+            </div>
+        </div>
         <header>
             <h1>📸 照片尺寸转换器</h1>
             <p>支持JPG、PNG格式，可转换为1×1cm到10×10cm尺寸，保持原图完整</p>
